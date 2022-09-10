@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen } from './screens';
+import { HomeScreen, ProductScreen } from './screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +14,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={globalScreenOptions}>
+        <Stack.Screen
+          options={{ title: 'Products' }}
+          name="Product"
+          component={ProductScreen}
+        />
         <Stack.Screen
           options={{ title: 'Home' }}
           name="Home"

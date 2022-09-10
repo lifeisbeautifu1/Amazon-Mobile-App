@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 
-import { Rating } from './';
+import Rating from './Rating';
 
 const ProductItem = ({ product }) => {
   return (
@@ -8,16 +8,22 @@ const ProductItem = ({ product }) => {
       <Image
         style={styles.image}
         source={{
-          uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/cleancode.jpg',
+          uri: product?.image,
         }}
       />
       <View style={styles.rightContainer}>
         <Text style={styles.title} numberOfLines={3}>
-          Logitech MX Master 3 Advanced Wireless Mouse for Mac - Bluetooth/USB
+          {product?.title}
         </Text>
-        <Rating rating={4.5} numberOfReviews={'13,032'} />
+        <Rating
+          rating={product?.avgRating}
+          numberOfReviews={product?.ratings}
+        />
         <Text style={styles.price}>
-          from $13.59 <Text style={styles.oldPrice}> $17.59</Text>
+          from ${product?.price}{' '}
+          {product?.oldPrice && (
+            <Text style={styles.oldPrice}> ${product?.oldPrice}</Text>
+          )}
         </Text>
       </View>
     </View>
