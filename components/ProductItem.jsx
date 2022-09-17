@@ -1,10 +1,16 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import Rating from './Rating';
 
 const ProductItem = ({ product }) => {
+  const navigation = useNavigation();
+  const onPress = () =>
+    navigation.navigate('Product', {
+      id: product.id,
+    });
   return (
-    <View style={styles.root}>
+    <TouchableOpacity activeOpacity={0.7} onPress={onPress} style={styles.root}>
       <Image
         style={styles.image}
         source={{
@@ -26,7 +32,7 @@ const ProductItem = ({ product }) => {
           )}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

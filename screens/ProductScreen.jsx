@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { useRoute } from '@react-navigation/native';
 import { useState } from 'react';
 
 import product from '../data/product';
 import { QuantitySelector, Button, ImageCarousel } from '../components';
 
 const ProductScreen = () => {
+  const { params } = useRoute();
   const [selectedValue, setSelectedValue] = useState(product?.options[0]);
   const [quantity, setQuantity] = useState(1);
   return (
