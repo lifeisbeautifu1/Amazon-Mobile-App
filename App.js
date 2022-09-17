@@ -1,6 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen, ProductScreen } from './screens';
+import {
+  HomeScreen,
+  ProductScreen,
+  ShoppingCartScreen,
+  AddressScreen,
+} from './screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +19,16 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={globalScreenOptions}>
+        <Stack.Screen
+          options={{ title: 'Shipping Address' }}
+          name="AddressScreen"
+          component={AddressScreen}
+        />
+        <Stack.Screen
+          options={{ title: 'Shopping Cart' }}
+          name="ShoppingCart"
+          component={ShoppingCartScreen}
+        />
         <Stack.Screen
           options={{ title: 'Products' }}
           name="Product"
